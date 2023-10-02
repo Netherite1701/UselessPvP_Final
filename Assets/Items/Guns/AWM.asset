@@ -1,0 +1,33 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d037b3167c21d7649963b2ab31f61a94, type: 3}
+  m_Name: AWM
+  m_EditorClassIdentifier: 
+  itemName: AWM
+  damage: 99
+  fireRate: 0
+  showtime: 0.1
+  isGun: 1
+  maxAmmo: 5
+  reloadTime: 4.5
+  range: 100
+  zoomFOV: 45
+  shootCooldownMin: 0.8
+  shootCooldownMax: 1
+  gunSFX: {fileID: 8300000, guid: fecc3e7a0166a104cb810435f6fdf37b, type: 3}
+  gunIndex: 5
+  RecoilRot: {x: 200, y: 50, z: 50}
+  RecoilRotAiming: {x: 125, y: 25, z: 25}
+  isShotgun: 0
+  bulletsPerShot: 6
+  inaccuracyDist: 5
+  isSR: 1
