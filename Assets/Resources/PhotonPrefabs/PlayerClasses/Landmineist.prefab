@@ -2670,6 +2670,7 @@ GameObject:
   - component: {fileID: 4297380602543915964}
   - component: {fileID: -75996973601817379}
   - component: {fileID: 2362494127546474960}
+  - component: {fileID: -5752521096649198097}
   m_Layer: 0
   m_Name: Landmineist
   m_TagString: Player
@@ -2754,6 +2755,7 @@ MonoBehaviour:
   dashForce: 25
   dashUpForce: 2
   cooltime: 0
+  dashCount: 0
   dashUI: {fileID: 1890514499321023931}
   acceleration: 25
   crouchSpeed: 3
@@ -3021,9 +3023,11 @@ MonoBehaviour:
   timeText: {fileID: 1009406203055314853}
   className: 
   playerMovement: {fileID: 8666041538422291853}
+  photonView: {fileID: -1398197788696179698}
   abilities_: {fileID: 2362494127546474960}
   abilityScript: {fileID: 8874487080619984521}
   healGO: {fileID: 0}
+  killCount: 0
 --- !u!114 &-75996973601817379
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3053,6 +3057,20 @@ MonoBehaviour:
   healerHealAmount: 10
   healCount: 5
   shieldUp: 0
+--- !u!114 &-5752521096649198097
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8666041538422291855}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2c329c886d8aba6409d2b1b88386659d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  killCount: 0
+  photonView: {fileID: -1398197788696179698}
 --- !u!1 &8666041538699483816
 GameObject:
   m_ObjectHideFlags: 0

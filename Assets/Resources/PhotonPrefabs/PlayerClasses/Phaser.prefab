@@ -2425,6 +2425,7 @@ GameObject:
   - component: {fileID: 4297380602543915964}
   - component: {fileID: -4333002884363339591}
   - component: {fileID: 85861349072980239}
+  - component: {fileID: -1468732158532173841}
   m_Layer: 0
   m_Name: Phaser
   m_TagString: Player
@@ -2774,9 +2775,11 @@ MonoBehaviour:
   timeText: {fileID: 7704548934736282099}
   className: 
   playerMovement: {fileID: 8666041538422291853}
+  photonView: {fileID: -1398197788696179698}
   abilities_: {fileID: 85861349072980239}
   abilityScript: {fileID: 1258808076837597070}
   healGO: {fileID: 0}
+  killCount: 0
 --- !u!114 &-4333002884363339591
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2806,6 +2809,20 @@ MonoBehaviour:
   healerHealAmount: 10
   healCount: 5
   shieldUp: 0
+--- !u!114 &-1468732158532173841
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8666041538422291855}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2c329c886d8aba6409d2b1b88386659d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  killCount: 0
+  photonView: {fileID: -1398197788696179698}
 --- !u!1 &8666041538991517024
 GameObject:
   m_ObjectHideFlags: 0

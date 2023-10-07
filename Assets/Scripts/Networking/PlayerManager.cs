@@ -4,6 +4,7 @@ using UnityEngine;
 using Photon.Pun;
 using System.IO;
 using TMPro;
+using Photon.Pun.Demo.PunBasics;
 
 public enum ClassType 
 {
@@ -19,10 +20,11 @@ public class PlayerManager : MonoBehaviour
     [SerializeField]
     private List<ClassData> classDatas;
     PhotonView PV;
-    int killCount;
     GameObject controller;
     int classIndex = 0;
     public bool alive = true;
+    public TMP_Text ttr;
+    public GameObject ttr_go;
     private void Awake()
     {
         PV = GetComponent<PhotonView>();
@@ -35,6 +37,9 @@ public class PlayerManager : MonoBehaviour
         {
             SpawnPlayer((ClassType)classIndex);
         }
+        ttr_go = GameObject.FindGameObjectWithTag("TTR");
+        ttr = ttr_go.GetComponent<TMP_Text>();
+        ttr_go.SetActive(false);
     }
 
     // public PlayerClass SpawnPlayer(ClassType type)
@@ -67,11 +72,18 @@ public class PlayerManager : MonoBehaviour
 
     IEnumerator Respawn()
     {
+        int t = 15;
         CameraManager.Instance.toggleAlive();
         alive = false;
         controller.GetComponent<Variables>().abilityScript.abilities.UnequipItem();
         PhotonNetwork.Destroy(controller);
-        yield return new WaitForSeconds(15f);
+        ttr_go.SetActive(true);
+        while (t > 0){
+            yield return new WaitForSeconds(1f);
+            t--;
+            ttr.text = "Time Until Respawn: " + t.ToString();
+        }
+        ttr_go.SetActive(false);
         SpawnPlayer((ClassType)classIndex);
         alive = true;
         CameraManager.Instance.toggleAlive();

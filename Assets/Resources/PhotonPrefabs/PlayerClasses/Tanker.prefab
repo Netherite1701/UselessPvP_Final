@@ -2502,6 +2502,7 @@ GameObject:
   - component: {fileID: 4297380602543915964}
   - component: {fileID: 7578303337950681015}
   - component: {fileID: 7964925909686501599}
+  - component: {fileID: -7678712920826369668}
   m_Layer: 0
   m_Name: Tanker
   m_TagString: Player
@@ -2586,6 +2587,7 @@ MonoBehaviour:
   dashForce: 10
   dashUpForce: 1
   cooltime: 0
+  dashCount: 0
   dashUI: {fileID: 1890514499321023931}
   acceleration: 15
   crouchSpeed: 2
@@ -2850,9 +2852,11 @@ MonoBehaviour:
   timeText: {fileID: 1976464561470350064}
   className: 
   playerMovement: {fileID: 8666041538422291853}
+  photonView: {fileID: -1398197788696179698}
   abilities_: {fileID: 7964925909686501599}
   abilityScript: {fileID: 6318703690345276047}
   healGO: {fileID: 0}
+  killCount: 0
 --- !u!114 &7578303337950681015
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2882,6 +2886,20 @@ MonoBehaviour:
   healerHealAmount: 10
   healCount: 5
   shieldUp: 0
+--- !u!114 &-7678712920826369668
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8666041538422291855}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2c329c886d8aba6409d2b1b88386659d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  killCount: 0
+  photonView: {fileID: -1398197788696179698}
 --- !u!1 &8666041538699483816
 GameObject:
   m_ObjectHideFlags: 0

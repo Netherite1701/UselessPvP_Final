@@ -29,7 +29,6 @@ public class GunScript : Gun
     {
         //if (((GunInfo)itemInfo).itemName == _currentWeapon)
         //{
-        Debug.Log("1");
         if (loadedAmmoCount <= 0 && ammoCount > 0)
         {
             Reload();
@@ -51,8 +50,9 @@ public class GunScript : Gun
                     RaycastHit hit;
                     if (Physics.Raycast(var.camHolder.transform.position, GetShootingDir(), out hit, ((GunInfo)itemInfo).range))
                     {
-                        Debug.Log(hit.collider.gameObject.name);
-                        hit.collider.gameObject.GetComponent<IDamageable>()?.TakeDamage(((GunInfo)itemInfo).damage);
+                        //Debug.Log(hit.collider.gameObject.name);
+                        Debug.Log(var.photonView.ViewID);
+                        hit.collider.gameObject.GetComponent<IDamageable>()?.TakeDamage(((GunInfo)itemInfo).damage, var.photonView.ViewID);
                         if (hit.collider.gameObject.tag == "Player")
                         {
                             var.hitMarker.SetActive(true);
@@ -75,7 +75,8 @@ public class GunScript : Gun
                 if (Physics.Raycast(ray, out hit, ((GunInfo)itemInfo).range))
                 {
                     //Debug.Log(hit.collider.gameObject.name);
-                    hit.collider.gameObject.GetComponent<IDamageable>()?.TakeDamage(((GunInfo)itemInfo).damage);
+                    Debug.Log(var.photonView.ViewID);
+                    hit.collider.gameObject.GetComponent<IDamageable>()?.TakeDamage(((GunInfo)itemInfo).damage, var.photonView.ViewID);
                     if (hit.collider.gameObject.tag == "Player")
                     {
                         var.hitMarker.SetActive(true);
@@ -110,8 +111,9 @@ public class GunScript : Gun
                     RaycastHit hit;
                     if (Physics.Raycast(var.camHolder.transform.position, GetShootingDir(), out hit, ((GunInfo)itemInfo).range))
                     {
-                        Debug.Log(hit.collider.gameObject.name);
-                        hit.collider.gameObject.GetComponent<IDamageable>()?.TakeDamage(((GunInfo)itemInfo).damage);
+                        //Debug.Log(hit.collider.gameObject.name);
+                        Debug.Log(var.photonView.ViewID);
+                        hit.collider.gameObject.GetComponent<IDamageable>()?.TakeDamage(((GunInfo)itemInfo).damage, var.photonView.ViewID);
                         if (hit.collider.gameObject.tag == "Player")
                         {
                             var.hitMarker.SetActive(true);
@@ -133,7 +135,8 @@ public class GunScript : Gun
                 if (Physics.Raycast(ray, out hit, ((GunInfo)itemInfo).range))
                 {
                     //Debug.Log(hit.collider.gameObject.name);
-                    hit.collider.gameObject.GetComponent<IDamageable>()?.TakeDamage(((GunInfo)itemInfo).damage);
+                    Debug.Log(var.photonView.ViewID);
+                    hit.collider.gameObject.GetComponent<IDamageable>()?.TakeDamage(((GunInfo)itemInfo).damage, var.photonView.ViewID);
                     if (hit.collider.gameObject.tag == "Player")
                     {
                         var.hitMarker.SetActive(true);

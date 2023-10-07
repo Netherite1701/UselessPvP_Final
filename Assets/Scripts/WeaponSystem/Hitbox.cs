@@ -35,10 +35,10 @@ public class Hitbox : MonoBehaviourPunCallbacks, IDamageable
 
 
 
-    public void TakeDamage(float damage)
+    public void TakeDamage(float damage,int id)
     {
         Debug.Log("took damage" + damage);
-        PV.RPC("RPC_TakeDamage", PV.Owner, damage);
+        PV.RPC("RPC_TakeDamage", PV.Owner, damage,id);
     }
 
     public void Heal(float amount)
@@ -48,7 +48,7 @@ public class Hitbox : MonoBehaviourPunCallbacks, IDamageable
     }
 
     [PunRPC]
-    void RPC_TakeDamage(float damage)
+    void RPC_TakeDamage(float damage,int id)
     {
         if (!PV.IsMine)
             return;
@@ -60,6 +60,7 @@ public class Hitbox : MonoBehaviourPunCallbacks, IDamageable
         UpdateHealthbar();
         if (currentHealth <= 0)
         {
+            photonView.RPC("IncrementKillCount", RpcTarget.AllBuffered,id);
             Die();
         }
     }

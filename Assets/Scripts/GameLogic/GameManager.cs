@@ -23,6 +23,10 @@ public class GameManager : MonoBehaviour
     private void Update()
     {
         time += Time.deltaTime;
+        if(playerCount <= 0)
+        {
+
+        }
     }
 
     public void resetTimer()

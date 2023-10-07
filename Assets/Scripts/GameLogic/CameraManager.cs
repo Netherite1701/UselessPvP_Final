@@ -21,19 +21,22 @@ public class CameraManager : MonoBehaviour
     private void Update()
     {
         Debug.Log(alive);
-        if (Input.GetMouseButtonDown(0) && !alive)
+        if (!alive)
         {
-            currentCameraIndex++;
-            if (currentCameraIndex < cameras.Length)
+            if (Input.GetMouseButtonDown(0))
             {
-                cameras[currentCameraIndex - 1].gameObject.SetActive(false);
-                cameras[currentCameraIndex].gameObject.SetActive(true);
-            }
-            else
-            {
-                cameras[currentCameraIndex - 1].gameObject.SetActive(false);
-                currentCameraIndex = 0;
-                cameras[currentCameraIndex].gameObject.SetActive(true);
+                currentCameraIndex++;
+                if (currentCameraIndex < cameras.Length)
+                {
+                    cameras[currentCameraIndex - 1].gameObject.SetActive(false);
+                    cameras[currentCameraIndex].gameObject.SetActive(true);
+                }
+                else
+                {
+                    cameras[currentCameraIndex - 1].gameObject.SetActive(false);
+                    currentCameraIndex = 0;
+                    cameras[currentCameraIndex].gameObject.SetActive(true);
+                }
             }
         }
     }
@@ -44,3 +47,5 @@ public class CameraManager : MonoBehaviour
         Debug.Log(alive);
     }
 }
+
+// Time Until Respawn: 

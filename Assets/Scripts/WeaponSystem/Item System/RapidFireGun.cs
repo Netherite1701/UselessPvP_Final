@@ -1,3 +1,4 @@
+using Photon.Pun;
 using System.Collections;
 using UnityEngine;
 
@@ -5,6 +6,7 @@ public class RapidFireGun : Gun
 {
     [SerializeField] Camera cam;
     [SerializeField] float fireRate = 5f;
+    [SerializeField] PhotonView pv;
     public override void Use()
     {
         Fire();
@@ -12,12 +14,13 @@ public class RapidFireGun : Gun
 
     void Shoot()
     {
+        Debug.Log(gameObject.name);
         Ray ray = cam.ViewportPointToRay(new Vector3(0.5f, 0.5f));
         ray.origin = cam.transform.position;
         if (Physics.Raycast(ray, out RaycastHit hit))
         {
             //Debug.Log(hit.collider.gameObject.name);
-            hit.collider.gameObject.GetComponent<IDamageable>()?.TakeDamage(((GunInfo)itemInfo).damage);
+            hit.collider.gameObject.GetComponent<IDamageable>()?.TakeDamage(((GunInfo)itemInfo).damage,pv.ViewID);
         }
     }
 

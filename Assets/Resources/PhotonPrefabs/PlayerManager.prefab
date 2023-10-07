@@ -75,3 +75,5 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 2fc2b260241fb02498aa050391bf5ecd, type: 2}
   - {fileID: 11400000, guid: f652275f5a87b1b4b94867131e19a561, type: 2}
   alive: 1
+  ttr: {fileID: 0}
+  ttr_go: {fileID: 0}

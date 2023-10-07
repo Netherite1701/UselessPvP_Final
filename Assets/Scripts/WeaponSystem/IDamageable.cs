@@ -1,4 +1,6 @@
+using Photon.Pun;
+
 public interface IDamageable
 {
-    void TakeDamage(float damage);
+    void TakeDamage(float damage,int pvID);
 }

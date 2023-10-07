@@ -22,15 +22,16 @@ public class Variables : MonoBehaviour
     [HideInInspector]
     public string className;
     public PlayerMovement playerMovement;
-    PhotonView photonView;
+    public PhotonView photonView;
     public Abilities abilities_;
     public AbilityScript abilityScript;
     public GameObject healGO;
+    public int killCount;
 
 
     private void Start()
     {
-        photonView= GetComponent<PhotonView>();
+        photonView = GetComponent<PhotonView>();
         className = playerClass.ReturnClassName();
         if (!photonView.IsMine)
         {
@@ -39,7 +40,8 @@ public class Variables : MonoBehaviour
                 script.enabled = false;
             }
         }
-        else {
+        else
+        {
             foreach (GameObject obj in GOToDisable)
             {
                 obj.SetActive(false);
