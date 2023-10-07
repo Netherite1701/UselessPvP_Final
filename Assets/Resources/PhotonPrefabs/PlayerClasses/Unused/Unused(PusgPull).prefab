@@ -2237,7 +2237,7 @@ GameObject:
   - component: {fileID: -4906120744699304802}
   - component: {fileID: 3356081069504903815}
   m_Layer: 0
-  m_Name: PushPull
+  m_Name: Unused(PusgPull)
   m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

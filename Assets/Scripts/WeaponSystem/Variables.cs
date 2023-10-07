@@ -15,6 +15,10 @@ public class Variables : MonoBehaviour
     public AudioSource audioSource;
     public AudioClip[] gunSFX;
     public PlayerClass playerClass;
+    public MonoBehaviour[] scriptsToDisable;
+    public GameObject[] GOToDisable;
+    public TMP_Text playerCountText;
+    public TMP_Text timeText;
     [HideInInspector]
     public string className;
     public PlayerMovement playerMovement;
@@ -28,6 +32,19 @@ public class Variables : MonoBehaviour
     {
         photonView= GetComponent<PhotonView>();
         className = playerClass.ReturnClassName();
+        if (!photonView.IsMine)
+        {
+            foreach (MonoBehaviour script in scriptsToDisable)
+            {
+                script.enabled = false;
+            }
+        }
+        else {
+            foreach (GameObject obj in GOToDisable)
+            {
+                obj.SetActive(false);
+            }
+        }
     }
     public void CallRPC(int index)
     {
@@ -43,5 +60,11 @@ public class Variables : MonoBehaviour
     public void PlayGunSFX(int index)
     {
         audioSource.PlayOneShot(gunSFX[index]);
+    }
+
+    public void Update()
+    {
+        playerCountText.text = GameManager.Instance.playerCount.ToString();
+        timeText.text = GameManager.Instance.time.ToString();
     }
 }

@@ -13,16 +13,17 @@ MonoBehaviour:
   m_Name: Shotgun
   m_EditorClassIdentifier: 
   itemName: Shotgun
+  isAbility: 0
+  isGun: 1
   damage: 7
   fireRate: 0
   showtime: 0.1
-  isGun: 1
   maxAmmo: 5
   reloadTime: 3
   range: 100
   zoomFOV: 60
-  shootCooldownMin: 0.5
-  shootCooldownMax: 0.6
+  shootCooldownMin: 2
+  shootCooldownMax: 3
   gunSFX: {fileID: 8300000, guid: 6349a640dc07c3b4389c205f5b5a5145, type: 3}
   gunIndex: 4
   RecoilRot: {x: 200, y: 50, z: 50}

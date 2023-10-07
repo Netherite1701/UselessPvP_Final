@@ -6,6 +6,7 @@ using UnityEngine.Video;
 
 public class Abilities : MonoBehaviour
 {
+    #region Setup
     public List<System.Action> abilityList;
     public List<System.Action> abilityReadyList;
     public Variables var;
@@ -28,7 +29,7 @@ public class Abilities : MonoBehaviour
         abilityList.Add(TankerSkill);
         abilityList.Add(LandmineistSkill);
         abilityList.Add(PhaserSkill);
-        abilityList.Add(PushPullSkill);
+        //abilityList.Add(PushPullSkill);
 
         abilityReadyList = new List<System.Action>();
         abilityReadyList.Add(SniperReady);
@@ -36,7 +37,7 @@ public class Abilities : MonoBehaviour
         abilityReadyList.Add(TankerReady);
         abilityReadyList.Add(LandmineistReady);
         abilityReadyList.Add(PhaserReady);
-        abilityReadyList.Add(PushPullReady);
+        //abilityReadyList.Add(PushPullReady);
         info = var.abilityScript.GetAbilityInfo();
     }
 
@@ -46,11 +47,9 @@ public class Abilities : MonoBehaviour
         var.aimingScript.aiming = false;
     }
 
-    //private void Update()
-    //{
-    //    Debug.Log(healing);
-    //}
+    #endregion
 
+    #region Sniper
     public void SniperSkill()
     {
         var.aimingScript.ZoomOut();
@@ -60,6 +59,9 @@ public class Abilities : MonoBehaviour
         
     }
 
+    #endregion
+
+    #region Healer
     public void HealerSkill()
     {
         if (healing == false)
@@ -85,6 +87,10 @@ public class Abilities : MonoBehaviour
         healing = false;
         StartCoroutine(var.abilityScript.UnequipAbilityCoroutine());
     }
+
+    #endregion
+
+    #region Tanker
     public void TankerSkill()
     {
         StartCoroutine(TankerCoroutine());
@@ -100,27 +106,28 @@ public class Abilities : MonoBehaviour
         shieldUp = false;
         UnequipItem();
     }
+    #endregion
+
+    #region Landmineist
+
     public void LandmineistSkill()
     {
         Debug.Log("Landmineist Skill");
     }
 
+    #endregion
+
+    #region Phaser
+
     public void PhaserSkill()
     {
-        Debug.Log("Phaser Skill");
+        playerMovement.startDash();
+        StartCoroutine(var.abilityScript.UnequipAbilityCoroutine());
     }
 
-    public void PushPullSkill()
-    {
-        Debug.Log("PushPull Skill");
-    }
+    #endregion
 
-
-    // void UpdateUI()
-    // {
-    //     var.ammoCountUI.text = "";
-    // }
-
+    #region Ready Functions
     public void SniperReady()
     {
         playerMovement.canMove = false;
@@ -146,10 +153,6 @@ public class Abilities : MonoBehaviour
         
     }
 
-    public void PushPullReady()
-    {
-        
-    }
-
+    #endregion
 
 }

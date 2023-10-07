@@ -4,6 +4,7 @@ using UnityEngine;
 using Photon.Pun;
 using TMPro;
 using Photon.Realtime;
+using Photon.Pun.Demo.Cockpit;
 
 public class Launcher : MonoBehaviourPunCallbacks
 {
@@ -17,7 +18,9 @@ public class Launcher : MonoBehaviourPunCallbacks
     [SerializeField] GameObject RoomListPrefab;
     [SerializeField] GameObject playerListPrefab;
     [SerializeField] GameObject startGameButton;
-    public string levelID = "1";
+    [SerializeField] GameObject RoomSelectUI;
+    public int levelID = 1;
+    public int playerCount = 1;
     // Start is called before the first frame update
     void Start()
     {
@@ -51,6 +54,7 @@ public class Launcher : MonoBehaviourPunCallbacks
         PhotonNetwork.CreateRoom(roomNameInputField.text);
         roomNameInputField.text = "";
         MenuManager.instance.OpenMenu("Loading");
+        playerCount = 1;
     }
 
     public override void OnJoinedRoom()
@@ -68,6 +72,7 @@ public class Launcher : MonoBehaviourPunCallbacks
         }
 
         startGameButton.SetActive(PhotonNetwork.IsMasterClient);
+        RoomSelectUI.SetActive(PhotonNetwork.IsMasterClient);
     }
 
     public override void OnMasterClientSwitched(Player newMasterClient)
@@ -113,15 +118,24 @@ public class Launcher : MonoBehaviourPunCallbacks
 
     public override void OnPlayerEnteredRoom(Player newPlayer)
     {
+        playerCount++;
         Instantiate(playerListPrefab, plC).GetComponent<PlayerListItem>().SetUp(newPlayer);
     }
 
     public void StartGame()
     {
-        PhotonNetwork.LoadLevel(int.Parse(levelID));
+        GameManager.Instance.playerCount = playerCount;
+        GameManager.Instance.resetTimer();
+        RoomManager.instance.CallRPC(playerCount);
+        PhotonNetwork.LoadLevel(levelID);
     }
 
     public void GetLevelID(string id)
+    {
+        levelID = int.Parse(id);
+    }
+
+    public void GetLevelIDInt(int id)
     {
         levelID = id;
     }

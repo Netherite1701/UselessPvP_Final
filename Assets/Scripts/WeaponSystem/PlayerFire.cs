@@ -11,7 +11,7 @@ public class PlayerFire : MonoBehaviour
     [SerializeField] PlayerLook pauseMenu;
     [SerializeField] Transform cameraTransform;
 
-    PlayerClass playerClass;
+    [SerializeField] PlayerClass playerClass;
     string className;
     //  ((GunInfo)gunScript.itemInfo)
 
@@ -21,7 +21,6 @@ public class PlayerFire : MonoBehaviour
         {
             this.enabled = false;
         }
-        playerClass = GetComponent<PlayerClass>();
         className = playerClass.ReturnClassName();
     }
 

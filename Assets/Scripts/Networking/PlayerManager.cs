@@ -7,7 +7,11 @@ using TMPro;
 
 public enum ClassType 
 {
-    Sniper,Healer,Tanker,Landmineist,Phaser,PushPull
+    Sniper,//0
+    Healer,//1
+    Tanker,//2
+    Landmineist,//3
+    Phaser
 }
 
 public class PlayerManager : MonoBehaviour
@@ -18,6 +22,7 @@ public class PlayerManager : MonoBehaviour
     int killCount;
     GameObject controller;
     int classIndex = 0;
+    public bool alive = true;
     private void Awake()
     {
         PV = GetComponent<PhotonView>();
@@ -56,8 +61,32 @@ public class PlayerManager : MonoBehaviour
 
     public void Die()
     {
-        PhotonNetwork.Destroy(controller);
-        SpawnPlayer((ClassType)classIndex);
+        CallRPC();
+        StartCoroutine(Respawn());        
     }
 
+    IEnumerator Respawn()
+    {
+        CameraManager.Instance.toggleAlive();
+        alive = false;
+        controller.GetComponent<Variables>().abilityScript.abilities.UnequipItem();
+        PhotonNetwork.Destroy(controller);
+        yield return new WaitForSeconds(15f);
+        SpawnPlayer((ClassType)classIndex);
+        alive = true;
+        CameraManager.Instance.toggleAlive();
+    }
+
+    public void CallRPC()
+    {
+        PV.RPC("UpdatePlayerCount", RpcTarget.All);
+    }
+
+    [PunRPC]
+    public void UpdatePlayerCount()
+    {
+        //Debug.Log("UpdatePlayerCount");
+        GameManager.Instance.playerCount -= 1;
+        //Debug.Log(GameManager.Instance.playerCount);
+    }
 }

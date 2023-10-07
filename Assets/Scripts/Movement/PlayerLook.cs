@@ -23,6 +23,8 @@ public class PlayerLook : MonoBehaviourPunCallbacks
     [SerializeField] GameObject Visual;
     [SerializeField] GameObject pauseMenu;
 
+    [SerializeField] Camera camera_;
+
     Animator animator1,animator2;
 
     float mouseX;
@@ -48,7 +50,8 @@ public class PlayerLook : MonoBehaviourPunCallbacks
         Cursor.visible = false;
         if (!PV.IsMine)
         {
-            Destroy(GetComponentInChildren<Camera>().gameObject);
+            Debug.Log("df");
+            Destroy(camera_.gameObject);
             this.enabled = false;
         }
         else
@@ -136,11 +139,8 @@ public class PlayerLook : MonoBehaviourPunCallbacks
     public void LeaveRoom()
     {
         Destroy(RoomManager.instance.gameObject);
-        Debug.Log("a");
         PhotonNetwork.LeaveRoom();
-        Debug.Log("b");
         PhotonNetwork.Disconnect();
-        Debug.Log("c");
         PhotonNetwork.LoadLevel(0);
         //StartCoroutine(WaitForDisconnect());
     }

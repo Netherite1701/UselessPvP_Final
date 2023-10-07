@@ -68,4 +68,20 @@ public class RoomManager : MonoBehaviourPunCallbacks
     {
         classIndex = int.Parse(index);
     }
+
+    public void GetClassIndexInt(int index)
+    {
+        classIndex = index;
+    }
+
+    public void CallRPC(int p)
+    {
+        GetComponent<PhotonView>().RPC("SyncVars", RpcTarget.Others, p);
+    }
+
+    [PunRPC]
+    public void SyncVars(int p)
+    {
+        GameManager.Instance.playerCount = p;
+    }
 }

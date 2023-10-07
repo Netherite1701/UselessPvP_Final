@@ -13,7 +13,7 @@ public class PlayerMovement : MonoBehaviourPunCallbacks
 
     [SerializeField] Transform orientation;
     [SerializeField] AimingScript aimingScript;
-    [SerializeField] GameObject eyes;
+    //[SerializeField] GameObject eyes;
     [SerializeField] WeaponRecoil weaponRecoil;
     [SerializeField] GunScript gunScript;
     [SerializeField] PlayerFire playerFire;
@@ -36,7 +36,7 @@ public class PlayerMovement : MonoBehaviourPunCallbacks
     [SerializeField] float dashForce;
     [SerializeField] float dashUpForce;
     [SerializeField] bool cooltime = false;
-    int dashCount = 0;
+    [SerializeField] int dashCount = 0;
     float movementMultiplier = 10f;
     KeyCode dashKey = KeyCode.V;
     [SerializeField] public TMP_Text dashUI;
@@ -148,7 +148,7 @@ public class PlayerMovement : MonoBehaviourPunCallbacks
         rb.freezeRotation = true;
         if (PV.IsMine)
         {
-            eyes.SetActive(false);
+            //eyes.SetActive(false);
             EquipItem(0);
         }
         else
@@ -218,10 +218,10 @@ public class PlayerMovement : MonoBehaviourPunCallbacks
                 CancelCrouch();
             }
 
-            if (Input.GetKeyDown(dashKey) && cooltime == false)
-            {
-                StartCoroutine(Dash());
-            }
+            //if (Input.GetKeyDown(dashKey) && cooltime == false)
+            //{
+            //    StartCoroutine(Dash());
+            //}
         }
         else
         {
@@ -347,6 +347,14 @@ public class PlayerMovement : MonoBehaviourPunCallbacks
         moveDirection = orientation.forward * verticalMovement + orientation.right * horizontalMovement;
     }
 
+    public void startDash()
+    {
+        if(cooltime == false)
+        {
+            StartCoroutine(Dash());
+        }
+    }
+
     void Jump()
     {
         //if (isGrounded)
@@ -418,7 +426,7 @@ public class PlayerMovement : MonoBehaviourPunCallbacks
     {
         capsuleCollider.height = 1.5f;
         capsuleCollider.center = new Vector3(0, 0.25f, 0);
-        viewModel.transform.localScale = new Vector3(0, 0.75f, 0);
+        //viewModel.transform.localScale = new Vector3(0, 0.75f, 0);
         isCrouching = true;
     }
 
@@ -426,7 +434,7 @@ public class PlayerMovement : MonoBehaviourPunCallbacks
     {
         capsuleCollider.height = 2;
         capsuleCollider.center = new Vector3(0, 0, 0);
-        viewModel.transform.localScale = new Vector3(0, 1, 0);
+        //viewModel.transform.localScale = new Vector3(0, 1, 0);
         isCrouching = false;
     }
 

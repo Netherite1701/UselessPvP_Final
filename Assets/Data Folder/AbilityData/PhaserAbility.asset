@@ -12,9 +12,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6e41b96fe06ee734fbcd3bb2678c87f6, type: 3}
   m_Name: PhaserAbility
   m_EditorClassIdentifier: 
-  itemName: Sniper
+  itemName: Phaser
   isAbility: 1
   isGun: 0
   abilityCoolTime: 0
+  abilityCastTime: 0
   abilityUseTime: 0
+  abilityUnequipTime: 0
   abilityIndex: 4

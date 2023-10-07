@@ -32,7 +32,6 @@ public class AbilityScript : AbilityItem
     }
     public void UseAbility()
     {
-
         if (state == AbilityState.ready){
             usingAbility = true;
             StartCoroutine(UseAbilityCoroutine());
@@ -56,7 +55,6 @@ public class AbilityScript : AbilityItem
         usingAbility = false;
         abilities.abilityList[((AbilityInfo)itemInfo).abilityIndex].Invoke();
         state = AbilityState.active;
-        
     }
 
     public IEnumerator UnequipAbilityCoroutine()
@@ -65,7 +63,6 @@ public class AbilityScript : AbilityItem
         state = AbilityState.cooldown;
         yield return new WaitForSeconds(((AbilityInfo)itemInfo).abilityUnequipTime);
         state = AbilityState.ready;
-        
     }
 
 }
