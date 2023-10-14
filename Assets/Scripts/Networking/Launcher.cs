@@ -49,7 +49,7 @@ public class Launcher : MonoBehaviourPunCallbacks
     {
         if (string.IsNullOrEmpty(roomNameInputField.text))
         {
-                  return;
+            return;
         }
         PhotonNetwork.CreateRoom(roomNameInputField.text);
         roomNameInputField.text = "";
@@ -87,12 +87,14 @@ public class Launcher : MonoBehaviourPunCallbacks
 
     public void LeaveRoom()
     {
+        GameManager.Instance.started = false;
         PhotonNetwork.LeaveRoom();
         MenuManager.instance.OpenMenu("Loading");
     }
 
     public override void OnLeftRoom()
     {
+        GameManager.Instance.started = false;
         MenuManager.instance.OpenMenu("Title");
     }
 
@@ -124,9 +126,12 @@ public class Launcher : MonoBehaviourPunCallbacks
 
     public void StartGame()
     {
+        if (playerCount <= 1)
+            return;
         GameManager.Instance.playerCount = playerCount;
         GameManager.Instance.resetTimer();
         RoomManager.instance.CallRPC(playerCount);
+        GameManager.Instance.started = true;
         PhotonNetwork.LoadLevel(levelID);
     }
 

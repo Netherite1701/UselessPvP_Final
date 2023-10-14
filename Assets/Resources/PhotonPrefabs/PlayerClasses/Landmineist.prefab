@@ -1101,6 +1101,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   PV: {fileID: -1398197788696179698}
   text: {fileID: 323366938211420251}
+  mainGo: {fileID: 8666041538422291855}
 --- !u!1 &5092766216640384355
 GameObject:
   m_ObjectHideFlags: 0
@@ -2914,6 +2915,7 @@ MonoBehaviour:
   player: {fileID: 8666041538422291855}
   var: {fileID: 4297380602543915964}
   hitSound: {fileID: 8300000, guid: 6b954bd4a4cc79b48b24c3b55c57fcc8, type: 3}
+  maxHealth: 100
   currentHealth: 100
 --- !u!136 &4028666611015742619
 CapsuleCollider:

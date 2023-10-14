@@ -5,6 +5,7 @@ using Photon.Pun;
 using System.IO;
 using TMPro;
 using Photon.Pun.Demo.PunBasics;
+using Photon.Pun.Demo.Cockpit.Forms;
 
 public enum ClassType 
 {
@@ -77,6 +78,8 @@ public class PlayerManager : MonoBehaviour
         CameraManager.Instance.toggleAlive();
         alive = false;
         controller.GetComponent<Variables>().abilityScript.abilities.UnequipItem();
+        if (GameManager.Instance.playerCount <= 3)
+            GameManager.Instance.score = GameManager.Instance.playerCount;
         PhotonNetwork.Destroy(controller);
         ttr_go.SetActive(true);
         while (t > 0){
@@ -98,7 +101,7 @@ public class PlayerManager : MonoBehaviour
     [PunRPC]
     public void UpdatePlayerCount()
     {
-        //Debug.Log("UpdatePlayerCount");
+        //Debug.Log("UpdatePlayerCount")
         GameManager.Instance.playerCount -= 1;
         //Debug.Log(GameManager.Instance.playerCount);
     }

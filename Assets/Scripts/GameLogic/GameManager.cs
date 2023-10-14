@@ -10,6 +10,11 @@ public class GameManager : MonoBehaviour
     public float time = 0;
     public int playerCount = 0;
 
+    public bool started = false;
+
+
+    public int score;
+
     private void Awake()
     {
         if (Instance)
@@ -23,10 +28,14 @@ public class GameManager : MonoBehaviour
 
     private void Update()
     {
-        time += Time.deltaTime;
-        if(playerCount <= 1)
+        if (started)
         {
-            PhotonNetwork.LoadLevel(4);
+            time += Time.deltaTime;
+            if (playerCount <= 1)
+            {
+                PhotonNetwork.LoadLevel(4);
+                started = false;
+            }
         }
     }
 

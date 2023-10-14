@@ -16,8 +16,8 @@ public class Hitbox : MonoBehaviourPunCallbacks, IDamageable
     AudioClip hitSound;
     
 
-    public const float maxHealth = 100f;
-    public float currentHealth = maxHealth;
+    public float maxHealth = 100f;
+    public float currentHealth = 100f;
 
     PlayerManager playerManager;
     private void Awake()

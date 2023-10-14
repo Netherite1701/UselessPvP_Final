@@ -43,6 +43,7 @@ public class PlayerInteraction : MonoBehaviour
             if (Physics.Raycast(ray, out hit, maxInteractionDistance, interactionMask)){
                 Debug.Log("Detected");
                 StartCoroutine(hit.transform.GetComponent<InteractionObject>().Interact(gunObjects[index]));
+                //StartCoroutine(CooldownCoroutine());
             }
 
         }

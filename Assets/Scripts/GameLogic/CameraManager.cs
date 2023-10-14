@@ -20,7 +20,6 @@ public class CameraManager : MonoBehaviour
 
     private void Update()
     {
-        Debug.Log(alive);
         if (!alive)
         {
             if (Input.GetMouseButtonDown(0))
