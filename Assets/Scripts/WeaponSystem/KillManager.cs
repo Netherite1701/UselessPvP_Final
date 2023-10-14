@@ -11,6 +11,7 @@ public class KillManager : MonoBehaviour
     [PunRPC]
     public void IncrementKillCount(int id)
     {
+        Debug.Log("Recieved RPC");
         if (photonView.ViewID == id)
         {
             killCount++;

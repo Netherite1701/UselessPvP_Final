@@ -25,6 +25,7 @@ public class PlayerManager : MonoBehaviour
     public bool alive = true;
     public TMP_Text ttr;
     public GameObject ttr_go;
+    public int respawnTime = 60; // Seconds
     private void Awake()
     {
         PV = GetComponent<PhotonView>();
@@ -72,16 +73,16 @@ public class PlayerManager : MonoBehaviour
 
     IEnumerator Respawn()
     {
-        int t = 15;
+        int t = respawnTime;
         CameraManager.Instance.toggleAlive();
         alive = false;
         controller.GetComponent<Variables>().abilityScript.abilities.UnequipItem();
         PhotonNetwork.Destroy(controller);
         ttr_go.SetActive(true);
         while (t > 0){
+            ttr.text = "Time Until Respawn: " + t.ToString();
             yield return new WaitForSeconds(1f);
             t--;
-            ttr.text = "Time Until Respawn: " + t.ToString();
         }
         ttr_go.SetActive(false);
         SpawnPlayer((ClassType)classIndex);

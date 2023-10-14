@@ -77,3 +77,4 @@ MonoBehaviour:
   alive: 1
   ttr: {fileID: 0}
   ttr_go: {fileID: 0}
+  respawnTime: 60

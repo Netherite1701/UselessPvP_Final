@@ -1,3 +1,4 @@
+using Photon.Pun;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -23,9 +24,9 @@ public class GameManager : MonoBehaviour
     private void Update()
     {
         time += Time.deltaTime;
-        if(playerCount <= 0)
+        if(playerCount <= 1)
         {
-
+            PhotonNetwork.LoadLevel(4);
         }
     }
 
